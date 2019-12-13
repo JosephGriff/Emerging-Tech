@@ -1,0 +1,19 @@
+Notebook:
+- https://nbviewer.jupyter.org/github/ianmcloughlin/jupyter-teaching-notebooks/blob/master/mnist.ipynb
+- https://www.youtube.com/watch?v=wQ8BIBpya2k&t=786s
+- https://nextjournal.com/gkoehler/digit-recognition-with-keras
+- https://pythonprogramming.net/tensorflow-deep-neural-network-machine-learning-tutorial/
+- https://www.digitalocean.com/community/tutorials/how-to-build-a-neural-network-to-recognize-handwritten-digits-with-tensorflow
+- https://levelup.gitconnected.com/classify-hand-written-digits-5fdbe5d99ee7
+
+Flask: 
+- https://www.palletsprojects.com/p/flask/
+- https://www.freecodecamp.org/news/how-to-build-a-web-application-using-flask-and-deploy-it-to-the-cloud-3551c985e492/
+- https://keras.io/
+- https://opencv.org/about/
+- https://stackoverflow.com/questions/56376943/running-keras-predictions-with-flask-gives-error?fbclid=IwAR2P1T6tlhxabN0IZ4BD4tH0G4OENq89cdiH0Id5Jc7_3EkyheFAVBIe2mQ
+- https://kobkrit.com/tensor-something-is-not-an-element-of-this-graph-error-in-keras-on-flask-web-server-4173a8fe15e1
+- https://stackoverflow.com/questions/36007883/tensorflow-attempting-to-use-uninitialized-value-in-variable-initialization
+- https://stackoverflow.com/questions/34001922/failedpreconditionerror-attempting-to-use-uninitialized-in-tensorflow
+- https://stackoverflow.com/questions/44624648/tensorflow-attempting-to-use-uninitialized-value-in-variable-initialization/44630421
+- https://github.com/tensorflow/tensorflow/issues/24367

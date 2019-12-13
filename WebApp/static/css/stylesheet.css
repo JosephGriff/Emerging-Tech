@@ -1,0 +1,45 @@
+#body{
+    color: pink;
+  }
+  
+  #h3{
+    color: red;
+  }
+  
+  #canvasDiv {
+    margin: 0px auto;
+    text-align: center;
+    width: 250px;
+    height: 250px;
+    border: 2px solid green;
+    background-color: black;
+  }
+  
+  #buttonDiv {
+    margin: 20px auto;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  #predictBtn {
+    background-color: grey;
+    color: white;
+    padding: 20px 20px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+  
+  #eraserBtn {
+    background-color: red;
+    color: white;
+    padding: 20px 20px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 50%;
+  }
+  
+  #prediction {
+    text-align: center;
+    color: brown;
+  }

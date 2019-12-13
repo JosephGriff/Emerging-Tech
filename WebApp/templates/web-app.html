@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!--Title given-->
+    <title>Digit Predicter</title>
+    <!--Link to stylesheet-->
+    <link rel="stylesheet" href="../static/css/stylesheet.css">
+</head>
+
+<body>
+    <div id="buttonDiv">
+        <button id="predictBtn" onclick="predict()">Predict</button>
+        <button id="eraserBtn" onclick="erase()">Eraser</button>
+    </div>
+    <div id="canvasDiv">
+        <canvas id="myCanvas"></canvas>
+    </div>
+    <div id="prediction">
+        <p>The Predicted Number is:</p>
+        <p id="predictedNumber"></p>
+    </div>
+
+    <!--Calling the Jquery script from an online source-->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+        <script >
+            // Variables
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+            var painting = document.getElementById('canvasDiv');
+            var paint_style = getComputedStyle(painting);
+            canvas.width = parseInt(paint_style.getPropertyValue('width'));
+            canvas.height = parseInt(paint_style.getPropertyValue('height'));
+            var mouse = { x: 0, y: 0 };
+           
+            // Event Listener for Drawing with Mouse
+            canvas.addEventListener('mousemove', function (e) {
+                // Need Offset to ensure mouse painting is accurate
+                mouse.x = e.pageX - this.offsetLeft;
+                mouse.y = e.pageY - this.offsetTop;
+            }, false);
+           
+            // Accurate to MNIST DS Image line width at 15. Should make predictions more accurate
+            ctx.lineWidth = 15;
+           
+            // Drawn in Round No Edges 
+            ctx.lineJoin = 'round';
+            ctx.lineCap = 'round';
+           
+            // Match MNIST DS with white draw paint. Also improves prediction accuracy
+            ctx.strokeStyle = '#FFFFFF';
+           
+            // Mouse Click
+            canvas.addEventListener('mousedown', function (e) {
+                // Draw Path
+                ctx.beginPath();
+                // Draw Line
+                ctx.moveTo(mouse.x, mouse.y);
+                canvas.addEventListener('mousemove', onPaint, false);
+            }, false);
+           
+            // Mouse Not Clicked
+            canvas.addEventListener('mouseup', function () {
+                canvas.removeEventListener('mousemove', onPaint, false);
+            }, false);
+           
+            // Draw Line Function for Canvas
+            var onPaint = function () {
+                ctx.lineTo(mouse.x, mouse.y);
+                ctx.stroke();
+            };
+           
+            // Clear Canvas for New Prediction.
+            function erase() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                $('#predictedNumber').text('');
+            }
+           
+            // Save Image Created
+            function predict() {
+                var canvas = document.getElementById("myCanvas");
+                var dataURL = canvas.toDataURL();
+                console.log(dataURL);
+           
+                // ajax for POST Method
+                $.ajax({
+                    type: 'POST',
+                    url: '/predict',
+                    data: {
+                        imgBase64: dataURL
+                    }
+                }).done(function (data) {
+                    // Logging to the Console
+                    console.log('SENT');
+                    console.log(data);
+                    $("#predictedNumber").empty().append(data);
+                });
+            };</script>
+</body>
+
+</html>
+
